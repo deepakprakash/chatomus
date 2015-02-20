@@ -31,3 +31,25 @@ General aims (still evolving) are below. Some of these are long term and will no
 
 ### Non-aims
 - Compatibility with existing IM protocols like XMPP.
+
+
+## Development
+
+Install `golang` (preferably version 1.4) and make sure `go` is added to your PATH and available on the command line.
+
+### General Setup
+
+Clone the repo locally - say to a directory called `~/Code/`. 
+
+```
+cd ~/Code/
+git clone https://github.com/deepakprakash/chatomus.git 
+```
+
+Golang requires (or recommends) a specific [workspace arrangement](https://golang.org/doc/code.html). Lets get that setup.
+
+```
+# Create a workspace directory separate from your 
+```
+
+
