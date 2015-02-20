@@ -28,3 +28,6 @@ General aims (still evolving) are below. Some of these are long term and will no
 - JSON payloads.
 - Well defined API endpoints instead of a specialized protocol.
 - Authentication/Authorisation mechanism between Chatomus servers. If A and B run separate Chatomus instances, then it must be possible for B to authorize herself with A (and vice-versa) without any external dependencies. (Post alpha)
+
+### Non-aims
+- Compatibility with existing IM protocols like XMPP.
