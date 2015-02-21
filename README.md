@@ -35,21 +35,76 @@ General aims (still evolving) are below. Some of these are long term and will no
 
 ## Development
 
-Install `golang` (preferably version 1.4) and make sure `go` is added to your PATH and available on the command line.
+Install `golang` (preferably version 1.4) and make sure `go` is added to your PATH and always available on the command line.
 
 ### General Setup
 
-Clone the repo locally - say to a directory called `~/Code/`.
+Golang requires (or recommends) a specific [workspace arrangement](https://golang.org/doc/code.html). Lets do that setup.
 
 ```
-cd ~/Code/
-git clone https://github.com/deepakprakash/chattic.git
+# Create a workspace directory for our code
+mkdir ~/Code/chattic-workspace
+cd ~/Code/chattic-workspace
+
+# Set the [GOPATH](https://code.google.com/p/go-wiki/wiki/GOPATH) to our workspace
+export GOPATH=~/Code/chattic-workspace
+
+# Add $GOPATH/bin to PATH so that the compile executables are available on the command line
+export PATH=$PATH:$GOPATH/bin
+
 ```
 
-Golang requires (or recommends) a specific [workspace arrangement](https://golang.org/doc/code.html). Lets get that setup.
+We use [`godep`](https://github.com/tools/godep) for dependency management. So install it.
 
 ```
-# Create a workspace directory separate from your
+go get github.com/tools/godep
 ```
 
+Once successful, the workspace directory should have a structure similar to this (with more levels):
 
+```
+.
+├── bin
+│   └── godep
+├── pkg
+│   └── darwin_amd64
+└── src
+    ├── github.com
+    └── golang.org
+```
+
+Now we `go get` the project:
+
+```
+go get github.com/deepakprakash/chattic
+```
+
+The project will be cloned to the directory `./src/github.com/deepakprakash/chattic/`. Whenever we make any changes, it should be in this directory.
+
+Now make sure we install our dependencies using `godep`
+
+```
+# Navigate to the chattic source directory
+cd ./src/github.com/deepakprakash/chattic
+
+# Ask godep to restore the dependencies
+godep restore
+```
+
+### Compile, Install and Run
+
+Make sure that the `GOPATH` is set correctly from the above instructions.
+
+To build and install:
+
+```
+go install github.com/deepakprakash/chattic
+```
+
+This will compile the code and install the `chattic` executable to your `$GOPATH/bin` directory.
+
+Since we also added `$GOPATH/bin` to the `$PATH`, the executable can be run directly from the terminal:
+
+```
+chattic
+```
