@@ -17,6 +17,8 @@ func setupMiddleware(e *gin.Engine) {
 
 func setupRoutes(e *gin.Engine) {
 	// Setup our routes and route specific middleware
+
+	e.GET("/", homePage)
 }
 
 func main() {
