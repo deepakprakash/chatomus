@@ -7,6 +7,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func setupMiddleware(e *gin.Engine) {
+	// Setup all the global middleware that we need
+
+	// Basic middlewares
+	e.Use(gin.Logger())
+	e.Use(gin.Recovery())
+}
+
+func setupRoutes(e *gin.Engine) {
+	// Setup our routes and route specific middleware
+}
+
 func main() {
 	app := cli.NewApp()
 
@@ -18,18 +30,24 @@ func main() {
 		cli.StringFlag{
 			Name:  "bind, b",
 			Value: ":4000",
-			Usage: "Host:Port for the server to bind to. Eg: `:4000`, `localhost:4000`, `0.0.0.0:4000`",
+			Usage: "Host:Port address for the server binding. Eg: `:4000`, `localhost:4000`, `0.0.0.0:4000`",
 		},
 	}
 
 	app.Action = func(c *cli.Context) {
 		// Action when the app is run.
 
-		// Setup the minimal gin router
-		router := gin.Default()
+		// Init the minimal gin engine
+		engine := gin.New()
+
+		// Setup middleware
+		setupMiddleware(engine)
+
+		// Setup routes
+		setupRoutes(engine)
 
 		// Run the server
-		router.Run(c.String("bind"))
+		engine.Run(c.String("bind"))
 	}
 
 	app.Run(os.Args)
