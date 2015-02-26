@@ -5,6 +5,8 @@ import (
 
 	"github.com/codegangsta/cli"
 	"github.com/gin-gonic/gin"
+
+	"github.com/deepakprakash/chattic/api/v1"
 )
 
 func setupMiddleware(e *gin.Engine) {
@@ -19,6 +21,11 @@ func setupRoutes(e *gin.Engine) {
 	// Setup our routes and route specific middleware
 
 	e.GET("/", homePage)
+
+	// Group routes for v1 API
+	apiV1 := e.Group("/api/v1")
+
+	apiV1.GET("/profile", v1.GetProfile)
 }
 
 func main() {
