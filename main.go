@@ -1,10 +1,10 @@
 package main
 
 import (
-	"log"
 	"net/http"
 	"os"
 
+	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
 	"github.com/gin-gonic/gin"
 
@@ -60,7 +60,9 @@ func main() {
 		// Run the server
 		if err := http.ListenAndServe(c.String("bind"), engine); err != nil {
 			// Error starting server. Log and exit.
-			log.Fatalf("Error starting server: %s", err)
+			log.WithFields(log.Fields{
+				"error": err,
+			}).Fatal("Failed to start server.")
 		}
 	}
 
