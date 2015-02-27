@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+	"net/http"
 	"os"
 
 	"github.com/codegangsta/cli"
@@ -56,7 +58,10 @@ func main() {
 		setupRoutes(engine)
 
 		// Run the server
-		engine.Run(c.String("bind"))
+		if err := http.ListenAndServe(c.String("bind"), engine); err != nil {
+			// Error starting server. Log and exit.
+			log.Fatalf("Error starting server: %s", err)
+		}
 	}
 
 	app.Run(os.Args)
