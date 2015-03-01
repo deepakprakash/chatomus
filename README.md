@@ -4,7 +4,7 @@ Exerimental self-hosted instant messaging with zero dependencies.
 Chattic lets you deploy your own secure chat server with minimal effort and have others chat with you by visiting your Chattic URL and authenticating themselves.
 
 ## Status
-Gathering facts, ongoing research. Nothing to try out yet.
+Under developement, gathering facts and ongoing research. Nothing significant to try out yet - but you can follow the "Development" instructions to compile and run the current version.
 
 ## Aims
 Chattic aims to be a lightweight, standalone IM server for individuals (and maybe teams) who want to own their data.
