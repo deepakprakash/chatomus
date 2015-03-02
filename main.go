@@ -28,6 +28,9 @@ func setupRoutes(e *gin.Engine) {
 	apiV1 := e.Group("/api/v1")
 
 	apiV1.GET("/profile", v1.GetProfile)
+
+	apiV1.POST("/auth/login", v1.Login)
+	apiV1.POST("/auth/logout", v1.Logout)
 }
 
 func main() {
