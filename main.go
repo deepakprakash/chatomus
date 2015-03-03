@@ -31,6 +31,8 @@ func setupRoutes(e *gin.Engine) {
 
 	apiV1.POST("/auth/login", v1.Login)
 	apiV1.POST("/auth/logout", v1.Logout)
+
+	apiV1.POST("/messages", v1.CreateMessage)
 }
 
 func main() {
